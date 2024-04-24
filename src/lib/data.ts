@@ -1,9 +1,8 @@
 export interface ICard {
   title: string;
   user: string;
-  date: Date;
+  date: string;
   description: string;
-  key: string
 }
 
 

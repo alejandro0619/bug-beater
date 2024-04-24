@@ -1,7 +1,7 @@
 "use client";
 import Card from "@/components/Card";
 import Details from "@/components/Details";
-import Profile from "@/components/Profile";
+import Profile from "@/components/Navbar";
 
 import { ICard } from "@/lib/data";
 import { useState } from "react";
@@ -13,43 +13,42 @@ export default function Dashboard() {
     setItemSelected(item);
   };
 
-  const test: ICard[] = [
+  const test: any = [
     {
       title: "issue n1",
-      date: new Date(),
+      date: "Wed Apr 24 2024 11:53:50 GMT-0400 (Venezuela Time)",
       description: "New issue",
       user: "pastaa",
       key: "issue1",
     },
     {
-      date: new Date(),
-      user: "John doe",
+      date: "Wed Apr 24 2024 11:50:00 GMT-0400 (Venezuela Time)",
       description: "jksnhdjkanhd",
-      title: "adadadad",
       key: "issue2",
+      title: "adadadad",
+      user: "John doe",
     },
     {
-      date: new Date(),
+      date: "Wed Apr 24 2024 13:53:50 GMT-0400 (Venezuela Time)",
       user: "tercer usuario",
       description: "jadadaddad",
       title: "adadad third title",
       key: "issue3",
     },
     {
-      date: new Date(),
+      date: "Wed Apr 24 2024 18:05:33 GMT-0400 (Venezuela Time)",
       user: "tercer usuario",
-      description: "jksnhdjkanhd",
+      description:
+        "jksnhdjkansdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahd",
       title: "lmao what am i doing",
       key: "issue4",
     },
   ];
 
   return (
-    <div className="flex h-screen">
-      <div className="flex items-center p-2 flex-col space-y-2 w-2/4 bg-Issues overflow-y-auto">
-        {/* <Profile user="alejandro0619" /> */}
-        <h1 className="text-2xl font-bold">Issues</h1>
-        {test.map((card) => (
+    <div className="flex h-screen pt-11">
+      <div className="flex w-2/4 flex-col items-center space-y-2 overflow-y-auto rounded bg-Issues py-5">
+        {test.map((card: any) => (
           <Card
             selectedItem={null}
             updateSelectedItem={handleSelectedItem}
@@ -58,10 +57,9 @@ export default function Dashboard() {
           />
         ))}
       </div>
-      <div className="flex flex-col justify-start items-center p-2 w-3/4 overflow-y-auto bg-Details">
-        <h1 className="text-2xl font-bold mt-4 mb-28">Details</h1>{" "}
-        {/* Adjust margins for spacing */}
-        <div className="flex justify-center items-center flex-col space-y-4">
+
+      <div className="flex w-3/4 flex-col items-center justify-center bg-Details  p-2">
+        <div className="flex flex-col items-center justify-center space-y-4 overflow-y-hidden">
           <Details {...itemSelected} />
         </div>
       </div>
