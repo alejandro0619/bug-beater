@@ -9,10 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        Issues: '#5f82ad',
-        Details: '#7e9dbc',
-        Card: '#C0C5CF',
-        DetailSection: '#202d3d',
+        Issues: '#09090b',
+        Navbar:'#09090b',
+        Details: '#09090b',
+        Card: '#09090b',
+        CardHover: '#27272a',
+        DetailSection: '#bebbbb',
+        borderColor: '151518'
       },
     },
   },

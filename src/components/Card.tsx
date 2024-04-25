@@ -19,16 +19,16 @@ export default function Card({
   const handleMouseLeave = () => setIsHovered(false);
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex px-8 py-2 flex-col w-full justify-center  text-white">
       <div
-        className={`max-w-sm cursor-pointer rounded p-4 shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)] ${
-          isHovered ? "bg-gray-400" : "bg-Card"
+        className={`cursor-pointer space-y-4 rounded-lg border-2 border-white p-8 ${
+          isHovered ? "bg-CardHover" : "bg-Card"
         }`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={() => updateSelectedItem({ title, date, user, description })}
       >
-        <h1 className="text-lg font-bold">Title: {title}</h1>
+        <h1 className="text-lg ">Title: {title}</h1>
         <p className="text-sm">
           <strong> Date </strong>: {date.toString()}
         </p>

@@ -6,7 +6,7 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import Navbar from "@/components/Navbar";
 import {ReactNode} from "react";
-
+import '@/app/global.css'
 config.autoAddCss = false
 
 const montserrat = Montserrat({ subsets: ["latin"], style: 'normal', weight: "400"});

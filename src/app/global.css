@@ -1,0 +1,5 @@
+/* Hide the scrollbar for all elements */
+::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
+

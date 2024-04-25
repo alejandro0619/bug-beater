@@ -46,8 +46,8 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="flex h-screen pt-11">
-      <div className="flex w-2/4 flex-col items-center space-y-2 overflow-y-auto rounded bg-Issues py-5">
+    <div className="flex h-screen pt-14">
+      <div className="flex w-2/4 flex-col items-center space-y-2  overflow-y-auto rounded bg-Issues py-5">
         {test.map((card: any) => (
           <Card
             selectedItem={null}
@@ -58,8 +58,8 @@ export default function Dashboard() {
         ))}
       </div>
 
-      <div className="flex w-3/4 flex-col items-center justify-center bg-Details  p-2">
-        <div className="flex flex-col items-center justify-center space-y-4 overflow-y-hidden">
+      <div className="flex w-3/4 flex-col justify-center border-l border-t border-b border-r-white bg-Details border-opacity-20 p-8">
+        <div className="flex flex-col justify-center space-y-6 overflow-y-hidden">
           <Details {...itemSelected} />
         </div>
       </div>
