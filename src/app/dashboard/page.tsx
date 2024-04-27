@@ -1,17 +1,25 @@
 "use client";
 import Card from "@/components/Card";
 import Details from "@/components/Details";
-import Profile from "@/components/Navbar";
 
 import { ICard } from "@/lib/data";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { fecthRepos } from "../api/services/fetching";
+import { AuthContext } from "@/providers/AuthProvider";
 
 export default function Dashboard() {
   const [itemSelected, setItemSelected] = useState<ICard | null>(null);
-
+  const [repos, setRepos] = useState<any[]>([]);
+  const user = useContext(AuthContext);
   const handleSelectedItem = (item: ICard) => {
     setItemSelected(item);
   };
+  useEffect(() => {
+    if (!user) return;
+    fecthRepos(user.info.login).then((data) => {
+      setRepos(data);
+    });
+  }, [user]);
 
   const test: any = [
     {
@@ -58,7 +66,7 @@ export default function Dashboard() {
         ))}
       </div>
 
-      <div className="flex w-3/4 flex-col justify-center border-l border-t border-b border-r-white bg-Details border-opacity-20 p-8">
+      <div className="flex w-3/4 flex-col justify-center border-b border-l border-t border-r-white border-opacity-20 bg-Details p-8">
         <div className="flex flex-col justify-center space-y-6 overflow-y-hidden">
           <Details {...itemSelected} />
         </div>

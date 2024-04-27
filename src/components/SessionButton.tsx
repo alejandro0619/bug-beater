@@ -1,28 +1,26 @@
 "use client";
+import { AuthContext } from "@/providers/AuthProvider";
 import {
   LoginLink,
   LogoutLink,
   RegisterLink,
 } from "@kinde-oss/kinde-auth-nextjs";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
-export default function SessionButton({
-  isAuth,
-  user,
-}: {
-  isAuth: boolean;
-  user: KindeUser | null;
-}) {
+export default function SessionButton() {
+  const user = useContext(AuthContext)
+
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  console.log('el usuario es', user)
   return (
     <div className="relative px-6 py-2">
       <button
         onClick={toggle}
         className="flex items-center rounded bg-gray-600 px-2 py-2 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none"
       >
-        {isAuth ? ` User: ${user?.given_name}` : "Account"}
+        {user ? `${user.info?.login}` : "Account"}
         <svg
           className="ml-2 h-4 w-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +32,7 @@ export default function SessionButton({
 
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg">
-          {isAuth ? (
+          {user ? (
             <LogoutLink className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Log out
             </LogoutLink>

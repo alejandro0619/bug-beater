@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import Navbar from "@/components/Navbar";
 import { ReactNode } from "react";
 import "@/app/global.css";
+import { AuthProvider } from "@/providers/AuthProvider";
 config.autoAddCss = false;
 
 const inter = Inter({ subsets: ["latin"], style: "normal", weight: "400" });
@@ -21,12 +22,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar  />
-        {children}
+        <AuthProvider>
+          <>
+          <Navbar />
+          {children}
+          </>
+        </AuthProvider>
       </body>
     </html>
   );
