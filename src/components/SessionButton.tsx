@@ -5,7 +5,7 @@ import {
   LogoutLink,
   RegisterLink,
 } from "@kinde-oss/kinde-auth-nextjs";
-import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/types";
+
 import { useContext, useState } from "react";
 
 export default function SessionButton() {
@@ -13,7 +13,7 @@ export default function SessionButton() {
 
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  console.log('el usuario es', user)
+
   return (
     <div className="relative px-6 py-2">
       <button

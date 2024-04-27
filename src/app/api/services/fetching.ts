@@ -1,10 +1,10 @@
-import { GithubUserResponse } from "@/lib/data";
+import { GithubUserResponse, Repo } from "@/lib/data";
 
-export const fecthRepos = async (username: string) => {
+export const fecthRepos = async (username: string): Promise<Repo[]> => {
   const response = await fetch(
     `https://api.github.com/users/${username}/repos`,
   );
-  const data = await response.json();
+  const data: Repo[] = await response.json();
   console.log(data);
   return data;
 };

@@ -6,15 +6,16 @@ import { ICard } from "@/lib/data";
 import { useContext, useEffect, useState } from "react";
 import { fecthRepos } from "../api/services/fetching";
 import { AuthContext } from "@/providers/AuthProvider";
-
+import { Repo } from "@/lib/data";
 export default function Dashboard() {
   const [itemSelected, setItemSelected] = useState<ICard | null>(null);
-  const [repos, setRepos] = useState<any[]>([]);
+  const [repos, setRepos] = useState<Repo[]>([]);
   const user = useContext(AuthContext);
   const handleSelectedItem = (item: ICard) => {
     setItemSelected(item);
   };
   useEffect(() => {
+    console.log(user)
     if (!user) return;
     fecthRepos(user.info.login).then((data) => {
       setRepos(data);
@@ -58,7 +59,7 @@ export default function Dashboard() {
       <div className="flex w-2/4 flex-col items-center space-y-2  overflow-y-auto rounded bg-Issues py-5">
         {test.map((card: any) => (
           <Card
-            selectedItem={null}
+
             updateSelectedItem={handleSelectedItem}
             {...card}
             key={card.key}

@@ -3,14 +3,12 @@ import { useState } from "react";
 import { ICard } from "@/lib/data";
 
 export default function Card({
-  selectedItem,
   updateSelectedItem,
   title,
   date,
   user,
   description,
 }: {
-  selectedItem: ICard | null;
   updateSelectedItem: (item: ICard) => void;
 } & ICard) {
   const [isHovered, setIsHovered] = useState(false);
