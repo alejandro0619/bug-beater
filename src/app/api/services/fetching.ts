@@ -1,27 +1,27 @@
-import { GithubUserResponse, Repo } from "@/lib/data";
+import { User, PullRequest, Repo } from "@/lib/data";
 
 export const fecthRepos = async (username: string): Promise<Repo[]> => {
   const response = await fetch(
     `https://api.github.com/users/${username}/repos`,
   );
   const data: Repo[] = await response.json();
-  console.log(data);
+
   return data;
 };
 
-export const fetchPRs = async (username: string, repo: string) => {
+export const fetchPRs = async (username: string, repo: string): Promise<PullRequest[]> => {
   const response = await fetch(
     `https://api.github.com/repos/${username}/${repo}/pulls`,
   );
-  const data = await response.json();
+  const data: PullRequest[] = await response.json();
   return data;
 };
 
-export const retrieveUserFromId = async (
+export const fecthUser = async (
   id: string,
-): Promise<GithubUserResponse> => {
+): Promise<User> => {
   const response = await fetch(`https://api.github.com/user/${id}`);
 
-  const user: GithubUserResponse = await response.json();
+  const user: User = await response.json();
   return user;
 };

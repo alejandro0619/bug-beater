@@ -1,11 +1,9 @@
-export interface ICard {
-  title: string;
-  user: string;
-  date: string;
-  description: string;
+export interface Cards {
+  user: User,
+  repository: Repo,
+  pr: PullRequest
 }
-
-export interface GithubUserResponse {
+export interface User {
   login: string;
   id: number;
   node_id: string;
@@ -40,16 +38,13 @@ export interface GithubUserResponse {
   updated_at: string;
 }
 
-export interface User {
-  info: GithubUserResponse;
-}
 export interface Repo {
   id: number;
   node_id: string;
   name: string;
   full_name: string;
   private: boolean;
-  owner: GithubUserResponse;
+  owner: User;
   html_url: string;
   description: string | null;
   fork: boolean;
@@ -124,5 +119,88 @@ export interface Repo {
   watchers: number;
   default_branch: string;
 }
-
+interface Label {
+  id: number;
+  node_id: string;
+  url: string;
+  name: string;
+  color: string;
+  default: boolean;
+  description: string;
+}
+export interface PullRequest {
+  url: string;
+  id: number;
+  node_id: string;
+  html_url: string;
+  diff_url: string;
+  patch_url: string;
+  issue_url: string;
+  number: number;
+  state: string;
+  locked: boolean;
+  title: string;
+  user: User;
+  body: string;
+  created_at: string;
+  updated_at: string;
+  closed_at: string | null;
+  merged_at: string | null;
+  merge_commit_sha: string | null;
+  assignee: any; // You may define an Assignee interface if needed
+  assignees: any[]; // You may define an Assignee interface if needed
+  requested_reviewers: any[]; // You may define a Reviewer interface if needed
+  requested_teams: any[]; // You may define a Team interface if needed
+  labels: Label[];
+  milestone: any; // You may define a Milestone interface if needed
+  draft: boolean;
+  commits_url: string;
+  review_comments_url: string;
+  review_comment_url: string;
+  comments_url: string;
+  statuses_url: string;
+  head: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repo;
+  };
+  base: {
+    label: string;
+    ref: string;
+    sha: string;
+    user: User;
+    repo: Repo;
+  };
+  _links: {
+    self: {
+      href: string;
+    };
+    html: {
+      href: string;
+    };
+    issue: {
+      href: string;
+    };
+    comments: {
+      href: string;
+    };
+    review_comments: {
+      href: string;
+    };
+    review_comment: {
+      href: string;
+    };
+    commits: {
+      href: string;
+    };
+    statuses: {
+      href: string;
+    };
+  };
+  author_association: string;
+  auto_merge: any; // You may define an AutoMerge interface if needed
+  active_lock_reason: string | null;
+}
 

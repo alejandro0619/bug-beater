@@ -20,7 +20,7 @@ export default function SessionButton() {
         onClick={toggle}
         className="flex items-center rounded bg-gray-600 px-2 py-2 text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none"
       >
-        {user ? `${user.info?.login}` : "Account"}
+        {user ? `${user.login}` : "Account"}
         <svg
           className="ml-2 h-4 w-4 fill-current"
           xmlns="http://www.w3.org/2000/svg"

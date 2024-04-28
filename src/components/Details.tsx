@@ -1,19 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import {PullRequest} from "@/lib/data";
 
-export default function Details({
-  title = "No hay título",
-  user = "No hay usuario",
-  description = "Sin descripcion",
-  date = "Wed Apr 24 2024 00:00:00 GMT-0400 (Venezuela Time)",
-}) {
-  const defaultValues = {
-    title: "No hay título",
-    user: "No hay usuario",
-    description: "Sin descripcion",
-    date: "Wed Apr 24 2024 00:00:00 GMT-0400 (Venezuela Time)",
-  };
+export default function Details(selectedtPr : PullRequest ) {
+
   const [isDeletePressed, setIsDeletePressed] = useState(false);
   const handleDltPressed = () => setIsDeletePressed(true);
 
@@ -24,25 +15,31 @@ export default function Details({
         <div className="flex w-full flex-row space-x-3">
           <h2 className="text-xl font-bold text-white">Title:</h2>
           <p className="text-xl text-white">
-            {isDeletePressed ? defaultValues.title : title}
+            {isDeletePressed ? '': selectedtPr.title}
           </p>
         </div>
         <div className="flex w-full flex-row space-x-3">
           <h2 className="text-xl font-bold text-white">User:</h2>
           <p className="text-xl text-white">
-            {isDeletePressed ? defaultValues.user : user}
+            {isDeletePressed ? '' : selectedtPr.user.login}
           </p>
         </div>
         <div className="flex w-full flex-row space-x-3">
-          <h2 className="text-xl font-bold text-white">Date:</h2>
+          <h2 className="text-xl font-bold text-white">Created at:</h2>
           <p className="text-xl text-white">
-            {isDeletePressed ? defaultValues.date : date}
+            {isDeletePressed ? '' : selectedtPr.created_at}
+          </p>
+        </div>
+        <div className="flex w-full flex-row space-x-3">
+          <h2 className="text-xl font-bold text-white">Updated at at:</h2>
+          <p className="text-xl text-white">
+            {isDeletePressed ? '' : selectedtPr.updated_at}
           </p>
         </div>
         <div className="flex w-full flex-col space-y-2">
           <h2 className="text-xl font-bold text-white">Description</h2>
           <p className="break-all text-lg text-white">
-            {isDeletePressed ? defaultValues.description : description}
+            {isDeletePressed ? '' : selectedtPr.body}
           </p>
         </div>
       </div>

@@ -1,18 +1,11 @@
 "use client";
 import { useState } from "react";
-import { ICard } from "@/lib/data";
+import { Cards, PullRequest } from "@/lib/data";
 
-export default function Card({
-  updateSelectedItem,
-  title,
-  date,
-  user,
-  description,
-}: {
-  updateSelectedItem: (item: ICard) => void;
-} & ICard) {
+export default function Card(pr: {
+  updateSelectedItem: (item: PullRequest) => void;
+} & PullRequest) {
   const [isHovered, setIsHovered] = useState(false);
-
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
@@ -24,18 +17,18 @@ export default function Card({
         }`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={() => updateSelectedItem({ title, date, user, description })}
+        onClick={() => pr.updateSelectedItem(pr as PullRequest)}
       >
-        <h1 className="text-lg ">Title: {title}</h1>
+        <h1 className="text-lg ">Title: {pr.title}</h1>
         <p className="text-sm">
-          <strong> Date </strong>: {date.toString()}
+          <strong> Date </strong>: {pr.created_at}
         </p>
         <p className="text-sm">
-          <strong> User </strong>: {user}
+          <strong> User </strong>: {pr.user.login}
         </p>
         <p className="break-all text-sm">
           {" "}
-          <strong> Description</strong>: {description}
+          <strong> Description</strong>: {pr.body}
         </p>
       </div>
     </div>
